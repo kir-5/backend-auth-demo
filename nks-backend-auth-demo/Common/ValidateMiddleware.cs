@@ -22,7 +22,7 @@ namespace nks_backend_auth_demo.Common
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context/*, IUserService userService, IJwtUtils jwtUtils*/)
+        public async Task Invoke(HttpContext context)
         {
             try
             {
@@ -33,7 +33,6 @@ namespace nks_backend_auth_demo.Common
                     var login = jwtSecurityToken.Claims.First(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value;
                     if (login == "admin@gmail.com")
                     {
-                        //что доступно
                         //I вариант: получить url и найти в нём слово
                         var method = context.Request.Method;
                         var url = context.Request.Path.Value;
